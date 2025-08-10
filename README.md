@@ -8,5 +8,5 @@ How to start an app:
 
 After using the app it is a good idea to enter the command: docker compose down
 
-PLEASE NOTE: You must generate API KEY from OpenWeather! (https://openweathermap.org/api)
+PLEASE NOTE: You must generate API KEY from OpenWeather and paste it in .env file! (https://openweathermap.org/api)
 
