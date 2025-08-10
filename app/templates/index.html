@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Pogoda</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      flex: 1;
+    }
+
+    button {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: #4facfe;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .weather-box {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1.5rem 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .weather-box h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .weather-box img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .weather-box p {
+      margin: 0.3rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sprawdź pogodę</h1>
+
+  <form method="post">
+    <input type="text" name="city" placeholder="Podaj miasto" required>
+    <button type="submit">Sprawdź</button>
+  </form>
+
+  {% if weather %}
+  <div class="weather-box">
+    <h2>Pogoda w {{ weather.city }}</h2>
+    <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Ikona pogody">
+    <p>Temperatura: {{ weather.temp }}°C</p>
+    <p>Opis: {{ weather.description }}</p>
+    <p>Ciśnienie: {{ weather.pressure }} hPa</p>
+    <p>Wilgotność: {{ weather.humidity }}%</p>
+    <p>Wiatr: {{ weather.wind_speed }} m/s</p>
+  </div>
+  {% endif %}
+
+</body>
+</html>
